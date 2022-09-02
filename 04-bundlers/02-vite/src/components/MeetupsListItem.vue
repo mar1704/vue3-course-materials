@@ -5,19 +5,19 @@
     </template>
 
     <template #default>
-      <UiBadge v-if="meetup.organizing" type="success" class="meetup-card__badge">Организую</UiBadge>
-      <UiBadge v-if="meetup.attending" type="primary" class="meetup-card__badge">Участвую</UiBadge>
+      <ui-badge v-if="meetup.organizing" type="success" class="meetup-card__badge">Организую</ui-badge>
+      <ui-badge v-if="meetup.attending" type="primary" class="meetup-card__badge">Участвую</ui-badge>
       <ul class="meetup-info">
         <li class="meetup-info__item">
-          <UiIcon class="icon meetup-info__icon" icon="user" />
+          <ui-icon icon="user" class="meetup-info__icon" />
           {{ meetup.organizer }}
         </li>
         <li class="meetup-info__item">
-          <UiIcon class="icon meetup-info__icon" icon="map" />
+          <ui-icon icon="map" class="meetup-info__icon" />
           {{ meetup.place }}
         </li>
         <li class="meetup-info__item">
-          <UiIcon class="icon meetup-info__icon" icon="cal-lg" />
+          <ui-icon icon="cal-lg" class="meetup-info__icon" />
           <time :datetime="formatAsIsoDate(meetup.date)">{{ formatAsLocalDate(meetup.date) }}</time>
         </li>
       </ul>
