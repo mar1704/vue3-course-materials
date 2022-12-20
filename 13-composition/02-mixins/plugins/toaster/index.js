@@ -11,6 +11,11 @@ export function createToaster({ container } = {}) {
     toast: toasterInstance.toast,
     install(app) {
       app.provide(TOASTER_KEY, toaster);
+      app.mixin({
+        methods: {
+          toast: toaster.toast,
+        },
+      });
     },
   };
   return toaster;

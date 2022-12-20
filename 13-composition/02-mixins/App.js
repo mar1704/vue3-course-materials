@@ -1,14 +1,8 @@
 import { defineComponent } from './vendor/vue.esm-browser.js';
-import { formatAsLocalDate, formatAsIsoDate } from './utils/dateFormatters.js';
 import UserForm from './UserForm.js';
-import { TOASTER_KEY } from './plugins/toaster/index.js';
 
 export default defineComponent({
   components: { UserForm },
-
-  inject: {
-    toaster: TOASTER_KEY,
-  },
 
   data() {
     return {
@@ -21,11 +15,9 @@ export default defineComponent({
   },
 
   methods: {
-    formatAsLocalDate,
-    formatAsIsoDate,
-
     handleSubmit() {
-      this.toaster.toast(this.user);
+      // Этот метод добавлен миксином, подключенным в плагине
+      this.toast(this.user);
     },
   },
 

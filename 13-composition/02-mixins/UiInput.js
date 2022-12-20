@@ -1,16 +1,15 @@
 import { defineComponent } from './vendor/vue.esm-browser.js';
-import { createModelProxy } from './utils/createModelProxy.js';
+import { modelProxyMixin } from './mixins/modelProxyMixin.js';
 
 export default defineComponent({
   name: 'UiInput',
 
+  // Локальное подключение миксинов
+  mixins: [modelProxyMixin],
+
   props: ['modelValue'],
 
   emits: ['update:modelValue'],
-
-  computed: {
-    modelValueProxy: createModelProxy(),
-  },
 
   template: `<input v-model="modelValueProxy" />`,
 });

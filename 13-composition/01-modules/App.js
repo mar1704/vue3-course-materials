@@ -1,4 +1,5 @@
 import { defineComponent } from './vendor/vue.esm-browser.js';
+import { formatAsLocalDate, formatAsIsoDate } from './utils/dateFormatters.js';
 import UserForm from './UserForm.js';
 import { TOASTER_KEY } from './plugins/toaster/index.js';
 
@@ -19,18 +20,21 @@ export default defineComponent({
     };
   },
 
-  methods: {
-    formatAsLocalDate(timestamp) {
-      return new Date(timestamp).toLocaleDateString(navigator.language, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
+  computed: {
+    // Обычные функции можно использовать в работе компонента
+    localDate() {
+      return formatAsLocalDate(this.date);
     },
 
-    formatAsIsoDate(timestamp) {
-      return new Date(timestamp).toISOString().substring(0, 10);
+    isoDate() {
+      return formatAsIsoDate(this.date);
     },
+  },
+
+  methods: {
+    // Если функция нужна в контексте компонента для использования в шаблоне, можно добавить её в методы
+    formatAsLocalDate,
+    formatAsIsoDate,
 
     handleSubmit() {
       this.toaster.toast(this.user);
